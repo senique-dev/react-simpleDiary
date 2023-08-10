@@ -2,6 +2,7 @@ import React from 'react'
 import {useSearchParams} from 'react-router-dom'
 import Button from '../component/Button';
 import Header from '../component/Header';
+import Editor from '../component/Editor';
 
 //useSearchParams 훅을 호출한다. 이 훅은 useState처럼 배열 형태로 값을 반환한다.
     //반환값의 첫 요소는 조회, 수정이 가능한 메소드를 포함한 쿼리스트링 객체,
@@ -15,27 +16,10 @@ const Home = () => {
     
   return (
     <div>
-      <Header
-        title={"Home"}
-        leftChild={
-          <Button 
-            type="positive"
-            text={"긍정 버튼"}
-            onClick={()=>{
-                alert("positive button");
-            }}
-          />
-        }
-        rightChild={
-          <Button 
-          type="negative"
-          text={"부정 버튼"}
-          onClick={()=>{
-              alert("negative button");
-          }}
-        />
-        }
-      />
+      <Editor 
+        onSubmit={() => {
+          alert("작성완료 버튼을 클릭했음");
+        }}/>
     </div>
   );
 };
