@@ -1,5 +1,5 @@
 import './Editor.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { emotionList, getFormattedDate } from '../util';
 import Button from './Button';
@@ -20,6 +20,22 @@ const Editor = ({ initData, onSubmit }) => {
         emotionId : 3,
         content : "",
     });
+    
+    useEffect(() => {
+        if (initData) {
+            setState({
+                ...initData,
+                date : getFormattedDate(new Date(parseInt(initData.date))),
+            });
+        }
+    }, [initData]);
+    /*  useEffect : 어떤 값이 변경될때마다 특정 코드를 실행하는 훅. [ 특정 값을 검사함 ].
+    useEffect를 호출하고 Props로 받은 initData를 의존성 배열에 저장.
+    결국 useEffect에 첫 번째 인수로 전달한 콜백 함수는 initData 값이 변경될 때마다 실행됨.
+
+    state.date 프로퍼티는 타임 스탬프 형식의 initData.date를 객체로 변환한 다음, 이를 다시 yyyy-mm-dd 형식의
+    문자열로 변환해 설정함. 
+    */
 
 
     // 날짜 입력 섹션 구현하기 (state.date 프로퍼티의 초깃값 -> 오늘날짜로 자동설정)

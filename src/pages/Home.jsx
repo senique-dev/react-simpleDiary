@@ -17,8 +17,13 @@ const Home = () => {
   return (
     <div>
       <Editor 
+        initData={{
+          date : new Date().getTime(),  // new Date().getTime() : 현재날짜를 타임스탬프 값으로 바꿔서 전달(후에 월 단위로 일기를 보여줄 때 날짜 비교 연산을 쉽게 하려고)
+          emotionId : 1,
+          content : "이전에 작성했던 일기",
+        }}
         onSubmit={() => {
-          alert("작성완료 버튼을 클릭했음");
+          alert("작성완료!");
         }}/>
     </div>
   );
