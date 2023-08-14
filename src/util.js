@@ -79,6 +79,4 @@ export const getMonthRangeByDate = (date) => {
         date.getMonth() +1,
         0, 23, 59, 59).getTime();
     return {beginTimeStamp, endTimeStamp};
-
-
-}
+};
