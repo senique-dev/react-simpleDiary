@@ -1,5 +1,5 @@
 import './Editor.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { emotionList, getFormattedDate } from '../util';
 import Button from './Button';
@@ -66,13 +66,15 @@ const Editor = ({ initData, onSubmit }) => {
         navigate(-1);
     }
 
-    const handleChangeEmotion = (emotionId) => {
-        setState({
+    const handleChangeEmotion = useCallback((emotionId) => { 
+        //useCallback으로 함수 handleChangeEmotion을 Editor컴포넌트 마운트 이후에는 다시 생성되지 않도록 메모이제이션한다
+        //근데 setState에서 참조하는 state 값이 마운트 이후 변하지 않아 State의 최신값을 유지할 수 없음, 정상적인 업데이트 불가
+        // 그래서 '함수형 업데이트' 사용 : setState 인수로 값이 아닌 함수를 전달하는 방법!
+        setState((state) => ({
             ...state,
             emotionId,
-        });
-    };
-
+        }));
+    }, []);
 
   return (
     <div className="Editor">
