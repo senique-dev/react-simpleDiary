@@ -5,8 +5,7 @@ import Home from './pages/Home';
 import New from './pages/New';
 import Diary from './pages/Diary';
 import Edit from './pages/Edit';
-export const DiaryStateContext = React.createContext(); // 391p
-export const DiaryDispatchContext = React.createContext(); // 400~402p
+
 
 
 // mockData - 홈/다이어리/뉴/에딧
@@ -42,12 +41,12 @@ function reducer(state, action) {
       return [action.data, ...state];
     }
     case "UPDATE" : {
-      return state.map((it) => {
+      return state.map((it) => 
         String(it.id) === String(action.data.id) ? { ...action.data } : it
-      })
+      )
     }
     case "DELETE" : {
-      return state.filter((it) => {String(it.id) !== String(action.targetId)}); // 삭제할 일기 id와 일치하는거 빼고 새 일기 데이터 배열을 만들어 반환
+      return state.filter((it) => String(it.id) !== String(action.targetId)); // 삭제할 일기 id와 일치하는거 빼고 새 일기 데이터 배열을 만들어 반환
     }
     default : {
       return state;
@@ -56,7 +55,8 @@ function reducer(state, action) {
 }
 
 
-
+export const DiaryStateContext = React.createContext(); // 391p
+export const DiaryDispatchContext = React.createContext(); // 400~402p
 
 function App() {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
