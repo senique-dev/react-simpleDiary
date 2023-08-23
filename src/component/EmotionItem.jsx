@@ -1,5 +1,5 @@
-import React from 'react'
-import './EmotionItem.css';
+import React from "react";
+import "./EmotionItem.css";
 
 // id : 감정 이미지의 아이디
 // img : 감정 이미지의 주소
@@ -8,21 +8,22 @@ import './EmotionItem.css';
 // isSelected : 감정이미지의 선택 여부 (선택된 이미지에 별도의 스타일을 적용하기 위함)
 
 const EmotionItem = ({ id, img, name, onClick, isSelected }) => {
-    const handleOnClick = () => {
-        onClick(id);
-    };
+  const handleOnClick = () => {
+    onClick(id);
+  };
 
   return (
-    <div className={[
+    <div
+      className={[
         "EmotionItem",
         isSelected ? `EmotionItem_on_${id}` : `EmotionItem_off`,
-        ].join(" ")}
-        onClick={handleOnClick}
+      ].join(" ")}
+      onClick={handleOnClick}
     >
       <img alt={`emotion${id}`} src={img} />
       <span>{name}</span>
     </div>
-  )
-}
+  );
+};
 
 export default React.memo(EmotionItem);
