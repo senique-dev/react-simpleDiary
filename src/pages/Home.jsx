@@ -17,7 +17,8 @@ const Home = () => {
 
   // Home Component의 pivotDate가 변할 때마다 해당 월에 작성된 일기를 필터링 - useEffect
   useEffect(()=> {
-    if (data.length>=1){ console.log(data);
+    if (data.length>=1){ 
+      // console.log(data);
       const {beginTimeStamp, endTimeStamp} = getMonthRangeByDate(pivotDate);
       setFilteredData( // data에서 pivotDate의 월과 같은 시기에 작성한 일기만 필터링, 필터링한 배열로 filteredData를 업데이트.
         data.filter(

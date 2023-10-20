@@ -46,7 +46,8 @@ function reducer(state, action) {
       )
     }
     case "DELETE" : {
-      return state.filter((it) => String(it.id) !== String(action.targetId)); // 삭제할 일기 id와 일치하는거 빼고 새 일기 데이터 배열을 만들어 반환
+      return state.filter((it) => String(it.id) !== String(action.targetId));
+     // 삭제할 일기 id와 일치하는거 빼고 새 일기 데이터 배열을 만들어 반환
     }
     default : {
       return state;
@@ -65,7 +66,7 @@ function App() {
 
   const idRef = useRef(0); //인수로 0을 전달해 초깃값 설정
 
-  useEffect(()=> { //481p
+  useEffect(()=> { //481p // 게시글 state를 mockData로 업데이트하면서 동시에 isDataLoaded 값을 true로 변경
     dispatch({
       type: "INIT",
       data: mockData,
