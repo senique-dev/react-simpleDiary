@@ -25,16 +25,9 @@ const DiaryList = ({data}) => { //부모인 Home에서 필터링된 일기를 Pr
         return Number(a.date) - Number(b.date);
       }
     };
-    
-    // 4) 배열의 sort메소드는 원본배열을 정렬함. 그러므로 정렬결과를 별도의 배열로 만들어야 함. 
-    //JSON.parse, JSON.stringify를 사용해 동일한 요소로 배열을 복사해 copyList에 저장.
-    const copyList = JSON.parse(JSON.stringify(data)); 
-
-    // 5) copyList에 저장된 일기 데이터를 정렬한다. 이때 인수로 2)에서 만든 compare함수를 전달.
-    copyList.sort(compare);  
-      
-    // 6) sortedData를 정렬된 일기 데이터로 업데이트한다.
-    setSortedData(copyList); 
+    const copyList = JSON.parse(JSON.stringify(data)); // 4) 배열의 sort메소드는 원본배열을 정렬함. 그러므로 정렬결과를 별도의 배열로 만들어야 함. JSON.parse, JSON.stringify를 사용해 동일한 요소로 배열을 복사해 copyList에 저장.
+    copyList.sort(compare);  // 5) copyList에 저장된 일기 데이터를 정렬한다. 이때 인수로 2)에서 만든 compare함수를 전달.
+    setSortedData(copyList); // 6) sortedData를 정렬된 일기 데이터로 업데이트한다.
   }, [data, sortType]);
       /* 
       JSON.stringify : 인수로 전달한 객체를 문자열로 변환하는 함수
