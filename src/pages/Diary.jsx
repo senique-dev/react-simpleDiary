@@ -1,10 +1,10 @@
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import useDiary from '../hooks/useDiary';
-import Header from '../component/Header';
-import { getFormattedDate } from '../util';
-import Button from '../component/Button';
-import Viewer from '../component/Viewer';
+import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import useDiary from "../hooks/useDiary";
+import Header from "../component/Header";
+import { getFormattedDate } from "../util";
+import Button from "../component/Button";
+import Viewer from "../component/Viewer";
 
 const Diary = () => {
   const { id } = useParams();
@@ -18,7 +18,8 @@ const Diary = () => {
     navigate(`/edit/${id}`);
   };
 
-  if (!data) { // useDiary가 아직 undefined일 때 : 프로퍼티에 접근하지 못하도록 막도록 예외처리 함
+  if (!data) {
+    // useDiary가 아직 undefined일 때 : 프로퍼티에 접근하지 못하도록 막도록 예외처리 함
     return <div>일기를 불러오고 있습니다...</div>;
   } else {
     const { date, emotionId, content } = data; //useDiary를 이용해 불러운 객체 형태의 일기 데이터를 구조분해할당. 이때 일기 id는 페이지에 렌더링하지 않음
@@ -26,15 +27,15 @@ const Diary = () => {
     return (
       <div>
         <Header
-          title = {title}
-          leftChild={<Button text={"< 뒤로 가기"} onClick={goBack}/>}
-          rightChild={<Button text={"수정하기"} onClick={goEdit}/>}
+          title={title}
+          leftChild={<Button text={"< 뒤로 가기"} onClick={goBack} />}
+          rightChild={<Button text={"수정하기"} onClick={goEdit} />}
         />
-        
+
         <Viewer content={content} emotionId={emotionId} />
       </div>
     );
   }
 };
 
-export default Diary
+export default Diary;
