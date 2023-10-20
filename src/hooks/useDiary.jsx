@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const useDiary = (id) => {
     const data = useContext(DiaryStateContext); //반환된 일기 데이터는 변수 data에 저장함
+    //console.log("useBItem data : ", data);
     const [diary, setDiary] = useState(); //매개변수로 저장한 id와 일치하는 일기를 저장할 State를 생성, State변수 이름은 diary
 
     const navigate = useNavigate();
